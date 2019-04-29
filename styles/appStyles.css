@@ -1,0 +1,41 @@
+﻿body {
+    font-family: arial;
+    background-color: #EDEDED;
+}
+.banner {
+	background-color: darkgrey;
+	font-weight: bolder;
+	text-align: center;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding: 5px;
+}
+
+.footer {
+position: fixed;
+bottom: 0px;
+right: 0px;
+margin-right: 5px;
+margin-bottom: 5px;
+}
+.flat-table {
+  display: block;
+  font-family: sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 115%;
+  overflow: auto;
+  width: auto;
+  }
+  th {
+    background-color: rgb(90, 122, 173);
+    color: white;
+    font-weight: normal;
+    padding: 10px 15px;
+    text-align: center;
+  }
+  td {
+    background-color: lightgrey;
+    padding: 10px 15px;
+    font-size: 10pt;
+  }
+		

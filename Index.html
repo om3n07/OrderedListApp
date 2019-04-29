@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html ng-app="orderedListApp">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- To prevent flashes of unstyled content -->
+    <style>
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+            display: none !important;
+        }
+    </style>
+    <title>OrderedListApp</title>
+</head>
+<body ng-controller="orderedListController as vm" ng-cloak>
+    <div class="banner">
+        <h1>
+            Ordered List Example
+        </h1>
+    </div>
+    <table class="flat-table" ng-show="!vm.loading">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Position</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tr ng-repeat="item in vm.orderedList | orderBy : 'Position'">
+            <td ng-click="vm.removeItem(item)"><i class="fa fa-trash" aria-hidden="true"></i></td>
+            <td>
+                <select ng-model="item.Position" 
+                        ng-change="vm.reOrderItems(item)"
+                    ng-options="option for option in vm.possiblePositions track by option">
+                </select>
+            </td>
+            <td><input ng-model="item.Name" ng-blur="vm.saveOrderedList()" /></td>
+        </tr>
+        <tr>
+            <td ng-click="vm.addItem(vm.newName)"><i class="fa fa-plus-square-o" aria-hidden="true"></i></td>
+            <td>{{vm.orderedList.length + 1}}</td>
+            <td><input name="addNewItem" required placeholder="Name" ng-model="vm.newName" /></td>
+        </tr>
+    </table>
+    <div ng-show="vm.loading">
+        <img src="assets/spinningwheel.gif" />
+    </div>
+    <div class="footer"><strong>ClientReferenceId:</strong> {{vm.clientReferenceId}}</div>
+    <script src="scripts/toastr.min.js"></script>
+    <script src="scripts/angular.min.js"></script>
+    <script src="scripts/angular-cookies.min.js"></script>
+    <script src="app/app.module.js"></script>
+    <script src="app/orderedListController.js"></script>
+    <script src="app/orderedListService.js"></script>
+    <script src="https://use.fontawesome.com/e3c620db1e.js"></script>
+    <link href="styles/appStyles.css" rel="stylesheet" />
+    <link href="content/toastr.min.css" rel="stylesheet" />
+</body>
+</html>
